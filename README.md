@@ -1,0 +1,2 @@
+# NDQueryAux
+Query auxiliary extensions
