@@ -4,7 +4,7 @@
 [![Licensed under the LGPL License](https://img.shields.io/badge/license-lgpl__2__1-blue)](https://github.com/shadowchamber/NDQueryAux/blob/master/LICENSE)
 [![PR's Welcome](https://img.shields.io/badge/PRs%20-welcome-brightgreen.svg)](#contribute)
 
-NDQueryAux is Extension (ISV Module) for Microsoft Dynamics 365 for finance and operations to be able to easier create mock objects for creating unit tests.
+NDQueryAux is Extension (ISV Module) for Microsoft Dynamics 365 for finance and operations to be able to easier create and update queuries.
 
 ## Documentation
 
