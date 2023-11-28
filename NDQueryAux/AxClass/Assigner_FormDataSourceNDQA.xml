@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>Assigner_FormDataSourceNDQA</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Assigner class for form data source
+/// </summary>
+public final class Assigner_FormDataSourceNDQA
+{
+    internal boolean condition;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>onAssignQuery</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// assign query delegate
+    /// </summary>
+    /// <param name = "_query">query to assign as Query</param>
+    delegate void onAssignQuery(Query _query)
+    {
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>query</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// assigns query to datasource
+    /// </summary>
+    /// <param name = "_query">query to assign as Query</param>
+    void query(Query _query)
+    {
+        if (condition)
+        {
+            this.onAssignQuery(_query);
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

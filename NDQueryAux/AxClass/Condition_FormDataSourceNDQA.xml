@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>Condition_FormDataSourceNDQA</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// condition for form data source
+/// </summary>
+public final class Condition_FormDataSourceNDQA
+{
+    internal boolean condition;
+    internal Assigner_FormDataSourceNDQA assigner;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>assigner</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// lazy init and assign assigner
+    /// </summary>
+    /// <param name = "_assigner">assigner as Assigner_FormDataSourceNDQA</param>
+    /// <returns>assigner as Assigner_FormDataSourceNDQA</returns>
+    internal Assigner_FormDataSourceNDQA assigner(Assigner_FormDataSourceNDQA _assigner = assigner)
+    {
+        if (!assigner)
+        {
+            assigner = new Assigner_FormDataSourceNDQA();
+            assigner.condition = condition;
+        }
+
+        return assigner;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>assign</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// return assigner
+    /// </summary>
+    /// <returns>returns assigner as Assigner_FormDataSourceNDQA</returns>
+    public Assigner_FormDataSourceNDQA assign()
+    {
+        return this.assigner();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

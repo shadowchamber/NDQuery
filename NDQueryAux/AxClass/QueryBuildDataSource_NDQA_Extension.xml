@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>QueryBuildDataSource_NDQA_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Query build data source extension class
+/// </summary>
+[ExtensionOf(classStr(QueryBuildDataSource))]
+final class QueryBuildDataSource_NDQA_Extension
+{
+    internal Query updatingQuery;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>dynalinksListNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of dynamic link
+    /// </summary>
+    /// <returns>list of dynamic link</returns>
+    public List dynalinksListNDQA()
+    {
+        List res = new List(Types::Class);
+
+        for (int i = 1; i <= this.dynalinkCount(); i++)
+        {
+            QueryBuildDynalink dynalink = this.dynalink(i);
+
+            res.addEnd(dynalink);
+        }
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>dynalinksEnumeratorNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of dynamic link enumerator
+    /// </summary>
+    /// <returns>list of dynamic link enumerator</returns>
+    public ListEnumerator dynalinksEnumeratorNDQA()
+    {
+        ListEnumerator res;
+        List list = this.dynalinksListNDQA();
+
+        res = list.getEnumerator();
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>linksNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of link
+    /// </summary>
+    /// <returns>list of link</returns>
+    public List linksNDQA()
+    {
+        List res = new List(Types::Class);
+
+        for (int i = 1; i <= this.linkCount(); i++)
+        {
+            QueryBuildLink link = this.link(i);
+
+            res.addEnd(link);
+        }
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>linksEnumeratorNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of link enumerator
+    /// </summary>
+    /// <returns>list of link enumerator</returns>
+    public ListEnumerator linksEnumeratorNDQA()
+    {
+        ListEnumerator res;
+        List list = this.linksNDQA();
+
+        res = list.getEnumerator();
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>replaceDynamicFieldNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// replaces dynamic link dynamic field
+    /// </summary>
+    /// <param name = "_fromDynamicFieldId">source field id</param>
+    /// <param name = "_toDynamicFieldId">destination field id</param>
+    /// <returns>query build data source</returns>
+    public QueryBuildDataSource replaceDynamicFieldNDQA(FieldId _fromDynamicFieldId, FieldId _toDynamicFieldId)
+    {
+        ListEnumerator dynamicLinksList = this.dynalinksEnumeratorNDQA();
+        List newDynLinksList = new List(Types::Class);
+
+        while (dynamicLinksList.moveNext())
+        {
+            QueryBuildDynalink dynalink = dynamicLinksList.current();
+            FieldId fieldId = dynalink.dynamicField();
+
+            if (fieldId == _fromDynamicFieldId)
+            {
+                dynalink.dynamicField(_toDynamicFieldId);
+            }
+
+            newDynLinksList.addEnd(dynalink);
+        }
+
+        return this;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>childDataSourcesListNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of child datasources
+    /// </summary>
+    /// <returns>list of child datasources</returns>
+    public List childDataSourcesListNDQA()
+    {
+        List res = new List(Types::Class);
+
+        for (int i = 1; i <= this.childDataSourceCount(); i++)
+        {
+            QueryBuildDataSource ds = this.childDataSourceNo(i);
+
+            res.addEnd(ds);
+        }
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>childDataSourcesEnumeratorNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of child datasources enumerator
+    /// </summary>
+    /// <returns>list of child datasources enumerator</returns>
+    public ListEnumerator childDataSourcesEnumeratorNDQA()
+    {
+        ListEnumerator res;
+        List list = this.childDataSourcesListNDQA();
+
+        res = list.getEnumerator();
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>rangesListNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of dynamic link
+    /// </summary>
+    /// <returns>list of dynamic link</returns>
+    public List rangesListNDQA()
+    {
+        List res = new List(Types::Class);
+
+        for (int i = 1; i <= this.rangeCount(); i++)
+        {
+            QueryBuildRange qbr = this.range(i);
+
+            res.addEnd(qbr);
+        }
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>rangesEnumeratorNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns list of dynamic link enumerator
+    /// </summary>
+    /// <returns>list of dynamic link enumerator</returns>
+    public ListEnumerator rangesEnumeratorNDQA()
+    {
+        ListEnumerator res;
+        List list = this.rangesListNDQA();
+
+        res = list.getEnumerator();
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>queryNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// return updating query
+    /// </summary>
+    /// <returns>updating query</returns>
+    public Query queryNDQA()
+    {
+        return updatingQuery;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

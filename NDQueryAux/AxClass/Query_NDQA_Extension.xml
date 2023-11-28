@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>Query_NDQA_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Query object extensions
+/// </summary>
+[ExtensionOf(classStr(Query))]
+final class Query_NDQA_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>dataSourceTableNDQA</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns datasource by table id with assigned updating query
+    /// </summary>
+    /// <param name = "_tableId">table id as TableId</param>
+    /// <param name = "_occurrence">number of occurence as int</param>
+    /// <returns>query build data source</returns>
+    public QueryBuildDataSource dataSourceTableNDQA(TableId _tableId, int _occurrence = 1)
+    {
+        QueryBuildDataSource res = this.dataSourceTable(_tableId, _occurrence);
+
+        res.updatingQuery = this;
+
+        return res;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

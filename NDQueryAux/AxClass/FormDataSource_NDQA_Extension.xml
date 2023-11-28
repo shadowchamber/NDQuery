@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>FormDataSource_NDQA_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Form data source extension class
+/// </summary>
+[ExtensionOf(classStr(FormDataSource))]
+final class FormDataSource_NDQA_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>when</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// returns condition object to check
+    /// </summary>
+    /// <param name = "_condition">boolean condition expression</param>
+    /// <returns>condition object as Condition_FormDataSourceNDQA</returns>
+    public Condition_FormDataSourceNDQA when(boolean _condition)
+    {
+        Condition_FormDataSourceNDQA assigner = new Condition_FormDataSourceNDQA();
+        assigner.condition = _condition;
+        assigner.assigner().onAssignQuery += eventhandler(this.assignQueryEventHandler);
+        return assigner;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>assignQueryEventHandler</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// assign query event handler
+    /// </summary>
+    /// <param name = "_query">query to assign as Query</param>
+    public void assignQueryEventHandler(Query _query)
+    {
+        this.query(_query);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
